@@ -15,6 +15,7 @@ import { StudyCategory } from 'src/studies/entities/study-category.entity';
 import { Statistic } from 'src/statistics/entities/statistic.entity';
 import { StreakColorChangePermission } from 'src/streaks/entities/streak-color-change-permission.entity';
 import { TransactionRecord } from 'src/transaction-records/entities/transaction-record.entity';
+import { EggInventory } from 'src/common/entities/egg-inventory.entity';
 
 @Entity()
 export class Member extends CommonEntity {
@@ -70,6 +71,9 @@ export class Member extends CommonEntity {
     (characterInventory) => characterInventory.member,
   )
   character_inventories: CharacterInventory[];
+
+  @OneToMany(() => EggInventory, (eggInventory) => eggInventory.member)
+  egg_inventories: EggInventory[];
 
   @OneToMany(() => StudyCategory, (studyCategory) => studyCategory.member)
   study_categories: StudyCategory[];
