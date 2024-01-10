@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { CommonEntity } from 'src/common/entities/common.entity';
 
@@ -14,4 +14,8 @@ export class Probability extends CommonEntity {
   @Column()
   @IsString()
   character_grade: string;
+
+  @Column()
+  @IsNumber()
+  odds: number;
 }
