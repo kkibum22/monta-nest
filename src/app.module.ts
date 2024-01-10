@@ -21,6 +21,7 @@ import { Palette } from './streaks/entities/palette.entity';
 import { StudyCategory } from './studies/entities/study-category.entity';
 import { StudyRecord } from './studies/entities/study-record.entity';
 import { Transaction } from './transactions/entities/transaction.entity';
+import { Probability } from './common/entities/probability.entity';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { Transaction } from './transactions/entities/transaction.entity';
         Transaction,
         CharacterInventory,
         Character,
+        Probability,
       ],
       synchronize: true,
     }),
@@ -58,11 +60,6 @@ import { Transaction } from './transactions/entities/transaction.entity';
     StreaksModule,
     StudiesModule,
     StatisticsModule,
-    StudyCategory,
-    StudyRecord,
-    StudyStreak,
-    Palette,
-    Statistic,
     TransactionsModule,
   ],
   controllers: [AppController],
