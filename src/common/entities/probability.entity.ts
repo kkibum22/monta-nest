@@ -5,7 +5,7 @@ import { CommonEntity } from 'src/common/entities/common.entity';
 @Entity()
 export class Probability extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  probability_id: string;
 
   @Column()
   @IsString()

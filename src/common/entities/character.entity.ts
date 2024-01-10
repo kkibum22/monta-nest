@@ -6,7 +6,7 @@ import { CharacterInventory } from './character-inventory.entity';
 @Entity()
 export class Character extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  character_id: string;
 
   @Column()
   @IsString()

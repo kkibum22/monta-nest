@@ -1,13 +1,13 @@
 import { IsEnum, IsString } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
+import { MemberRole } from 'src/members/entities/member-role.enum';
 import { Member } from 'src/members/entities/member.entity';
-import { MemberRole } from 'src/members/entities/user-role.enum';
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
 
 @Entity()
 export class Account extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  account_id: string;
 
   @Column()
   @IsString()

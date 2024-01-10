@@ -6,7 +6,7 @@ import { CommonEntity } from './common.entity';
 @Entity()
 export class CharacterInventory extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  character_inventory_id: string;
 
   @ManyToOne(() => Character)
   @JoinColumn({ name: 'character_id' })

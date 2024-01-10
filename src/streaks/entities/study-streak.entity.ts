@@ -14,7 +14,7 @@ import { Member } from 'src/members/entities/member.entity';
 @Entity()
 export class StudyStreak extends CommonEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  study_streak_id: number;
 
   @Column()
   @IsNumber()

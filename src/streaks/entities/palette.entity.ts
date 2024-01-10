@@ -7,7 +7,7 @@ import { StudyStreak } from './study-streak.entity';
 @Entity()
 export class Palette extends CommonEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  palette_id: number;
 
   @Column({
     type: 'enum',
