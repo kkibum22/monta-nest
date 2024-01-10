@@ -33,5 +33,5 @@ export class Egg extends CommonEntity {
   grade: string;
 
   @OneToMany(() => EggInventory, (eggInventory) => eggInventory.egg)
-  EggInventories: EggInventory[];
+  eggInventories: EggInventory[];
 }
