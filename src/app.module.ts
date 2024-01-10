@@ -7,8 +7,8 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { Account } from './auth/entities/account.entity';
-import { StreakModule } from './streak/streak.module';
-import { StudyModule } from './study/study.module';
+import { StreaksModule } from './streaks/streaks.module';
+import { StudiesModule } from './studies/studies.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { TransactionsModule } from './transactions/transactions.module';
 
@@ -30,8 +30,8 @@ import { TransactionsModule } from './transactions/transactions.module';
     }),
     UsersModule,
     AuthModule,
-    StreakModule,
-    StudyModule,
+    StreaksModule,
+    StudiesModule,
     StatisticsModule,
     TransactionsModule,
   ],
