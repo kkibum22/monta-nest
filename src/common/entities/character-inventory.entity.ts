@@ -1,4 +1,4 @@
-import { User } from 'src/users/entities/user.entity';
+import { Member } from 'src/members/entities/member.entity';
 import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Character } from './character.entity';
 import { CommonEntity } from './common.entity';
@@ -12,7 +12,7 @@ export class CharacterInventory extends CommonEntity {
   @JoinColumn({ name: 'character_id' })
   character: Character;
 
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  @ManyToOne(() => Member)
+  @JoinColumn({ name: 'member_id' })
+  member: Member;
 }

@@ -3,8 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
-import { User } from './users/entities/user.entity';
+import { Member } from './members/entities/member.entity';
 import { AuthModule } from './auth/auth.module';
 import { Account } from './auth/entities/account.entity';
 import { CharacterInventory } from './common/entities/character-inventory.entity';
@@ -14,15 +13,16 @@ import { StudiesModule } from './studies/studies.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { Egg } from './common/entities/egg.entity';
 import { EggInventory } from './common/entities/egg-inventory.entity';
-import { TransactionsModule } from './transactions/transactions.module';
 import { Statistic } from './statistics/entities/statistic.entity';
 import { StudyStreak } from './streaks/entities/study-streak.entity';
 import { Palette } from './streaks/entities/palette.entity';
 import { StudyCategory } from './studies/entities/study-category.entity';
 import { StudyRecord } from './studies/entities/study-record.entity';
-import { Transaction } from './transactions/entities/transaction.entity';
 import { Probability } from './common/entities/probability.entity';
 import { StreakColorChangePermission } from './streaks/entities/streak-color-change-permission.entity';
+import { MembersModule } from './members/members.module';
+import { TransactionRecord } from './transaction-records/entities/transaction-record.entity';
+import { TransactionRecordsModule } from './transaction-records/transaction-records.module';
 
 @Module({
   imports: [
@@ -38,7 +38,7 @@ import { StreakColorChangePermission } from './streaks/entities/streak-color-cha
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: [
-        User,
+        Member,
         Account,
         Egg,
         EggInventory,
@@ -47,7 +47,7 @@ import { StreakColorChangePermission } from './streaks/entities/streak-color-cha
         Palette,
         StudyCategory,
         StudyRecord,
-        Transaction,
+        TransactionRecord,
         CharacterInventory,
         Character,
         Probability,
@@ -55,12 +55,12 @@ import { StreakColorChangePermission } from './streaks/entities/streak-color-cha
       ],
       synchronize: true,
     }),
-    UsersModule,
+    MembersModule,
     AuthModule,
     StreaksModule,
     StudiesModule,
     StatisticsModule,
-    TransactionsModule,
+    TransactionRecordsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

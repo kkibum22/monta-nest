@@ -1,6 +1,6 @@
 import { IsNumber } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { User } from 'src/users/entities/user.entity';
+import { Member } from 'src/members/entities/member.entity';
 import {
   Entity,
   Column,
@@ -18,7 +18,7 @@ export class StreakColorChangePermission extends CommonEntity {
   @IsNumber()
   available_change: number;
 
-  @OneToOne(() => User, (user) => user.streak_color_change_permission)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  @OneToOne(() => Member, (member) => member.streak_color_change_permission)
+  @JoinColumn({ name: 'member_id' })
+  member: Member;
 }

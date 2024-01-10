@@ -7,18 +7,18 @@ import {
   JoinColumn,
   OneToMany,
 } from 'typeorm';
-import { UserRole } from './user-role.enum';
+import { MemberRole } from './user-role.enum';
 import { Account } from 'src/auth/entities/account.entity';
 import { CommonEntity } from 'src/common/entities/common.entity';
 import { CharacterInventory } from 'src/common/entities/character-inventory.entity';
 import { StudyCategory } from 'src/studies/entities/study-category.entity';
 import { Statistic } from 'src/statistics/entities/statistic.entity';
-import { Transaction } from 'src/transactions/entities/transaction.entity';
 import { StreakColorChangePermission } from 'src/streaks/entities/streak-color-change-permission.entity';
+import { TransactionRecord } from 'src/transaction-records/entities/transaction-record.entity';
 import { EggInventory } from 'src/common/entities/egg-inventory.entity';
 
 @Entity()
-export class User extends CommonEntity {
+export class Member extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -38,11 +38,11 @@ export class User extends CommonEntity {
 
   @Column({
     type: 'enum',
-    enum: UserRole,
-    default: UserRole.USER,
+    enum: MemberRole,
+    default: MemberRole.USER,
   })
-  @IsEnum(UserRole)
-  role: UserRole;
+  @IsEnum(MemberRole)
+  role: MemberRole;
 
   @Column({
     nullable: true,
@@ -62,32 +62,35 @@ export class User extends CommonEntity {
   @IsNumber()
   point: number;
 
-  @OneToOne(() => Account, (account) => account.user)
+  @OneToOne(() => Account, (account) => account.member)
   @JoinColumn({ name: 'account_id' })
   account: Account;
 
   @OneToMany(
     () => CharacterInventory,
-    (characterInventory) => characterInventory.user,
+    (characterInventory) => characterInventory.member,
   )
   character_inventories: CharacterInventory[];
 
-  @OneToMany(() => EggInventory, (eggInventory) => eggInventory.user)
+  @OneToMany(() => EggInventory, (eggInventory) => eggInventory.member)
   egg_inventories: EggInventory[];
 
-  @OneToMany(() => StudyCategory, (studyCategory) => studyCategory.user)
+  @OneToMany(() => StudyCategory, (studyCategory) => studyCategory.member)
   study_categories: StudyCategory[];
 
-  @OneToOne(() => Statistic, (statistic) => statistic.user)
+  @OneToOne(() => Statistic, (statistic) => statistic.member)
   @JoinColumn({ name: 'statistic_id' })
   statistic: Statistic;
 
-  @OneToMany(() => Transaction, (transaction) => transaction.user)
-  transactions: Transaction[];
+  @OneToMany(
+    () => TransactionRecord,
+    (transactionRecord) => transactionRecord.member,
+  )
+  transaction_records: TransactionRecord[];
 
   @OneToOne(
     () => StreakColorChangePermission,
-    (streakColorChangePermission) => streakColorChangePermission.user,
+    (streakColorChangePermission) => streakColorChangePermission.member,
   )
   @JoinColumn({ name: 'streak_color_change_permission_id' })
   streak_color_change_permission: StreakColorChangePermission;
