@@ -1,7 +1,7 @@
 import { IsNumber, IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { CharacterInventory } from './character_inventory.entity';
+import { CharacterInventory } from './character-inventory.entity';
 
 @Entity()
 export class Character extends CommonEntity {

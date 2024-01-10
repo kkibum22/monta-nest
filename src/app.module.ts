@@ -7,21 +7,22 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { Account } from './auth/entities/account.entity';
-import { CharacterInventory } from './common/entities/character_inventory.entity';
+import { CharacterInventory } from './common/entities/character-inventory.entity';
 import { Character } from './common/entities/character.entity';
 import { StreaksModule } from './streaks/streaks.module';
 import { StudiesModule } from './studies/studies.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { Egg } from './common/entities/egg.entity';
-import { EggInventory } from './common/entities/egg_inventory.entity';
+import { EggInventory } from './common/entities/egg-inventory.entity';
 import { TransactionsModule } from './transactions/transactions.module';
 import { Statistic } from './statistics/entities/statistic.entity';
-import { StudyStreak } from './streaks/entities/study_streak.entity';
+import { StudyStreak } from './streaks/entities/study-streak.entity';
 import { Palette } from './streaks/entities/palette.entity';
 import { StudyCategory } from './studies/entities/study-category.entity';
 import { StudyRecord } from './studies/entities/study-record.entity';
 import { Transaction } from './transactions/entities/transaction.entity';
 import { Probability } from './common/entities/probability.entity';
+import { StreakColorChangePermission } from './streaks/entities/streak-color-change-permission.entity';
 
 @Module({
   imports: [
@@ -39,8 +40,6 @@ import { Probability } from './common/entities/probability.entity';
       entities: [
         User,
         Account,
-        CharacterInventory,
-        Character,
         Egg,
         EggInventory,
         Statistic,
@@ -52,6 +51,7 @@ import { Probability } from './common/entities/probability.entity';
         CharacterInventory,
         Character,
         Probability,
+        StreakColorChangePermission,
       ],
       synchronize: true,
     }),

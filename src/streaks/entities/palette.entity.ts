@@ -2,7 +2,7 @@ import { IsEnum, IsString } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { PaletteGrade } from './palette.enum';
-import { StudyStreak } from './study_streak.entity';
+import { StudyStreak } from './study-streak.entity';
 
 @Entity()
 export class Palette extends CommonEntity {
