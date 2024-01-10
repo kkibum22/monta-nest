@@ -11,7 +11,7 @@ import { TransactionType } from './transaction.enum';
 import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
-export class Transaction extends CommonEntity {
+export class TransactionRecord extends CommonEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -38,7 +38,7 @@ export class Transaction extends CommonEntity {
   @IsString()
   notes: string;
 
-  @ManyToOne(() => Member, (member) => member.transactions)
+  @ManyToOne(() => Member, (member) => member.transaction_records)
   @JoinColumn({ name: 'member_id' })
   member: Member;
 }

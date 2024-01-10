@@ -13,16 +13,16 @@ import { StudiesModule } from './studies/studies.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { Egg } from './common/entities/egg.entity';
 import { EggInventory } from './common/entities/egg-inventory.entity';
-import { TransactionsModule } from './transactions/transactions.module';
 import { Statistic } from './statistics/entities/statistic.entity';
 import { StudyStreak } from './streaks/entities/study-streak.entity';
 import { Palette } from './streaks/entities/palette.entity';
 import { StudyCategory } from './studies/entities/study-category.entity';
 import { StudyRecord } from './studies/entities/study-record.entity';
-import { Transaction } from './transactions/entities/transaction.entity';
 import { Probability } from './common/entities/probability.entity';
 import { StreakColorChangePermission } from './streaks/entities/streak-color-change-permission.entity';
 import { MembersModule } from './members/members.module';
+import { TransactionRecord } from './transaction-records/entities/transaction-record.entity';
+import { TransactionRecordsModule } from './transaction-records/transaction-records.module';
 
 @Module({
   imports: [
@@ -47,7 +47,7 @@ import { MembersModule } from './members/members.module';
         Palette,
         StudyCategory,
         StudyRecord,
-        Transaction,
+        TransactionRecord,
         CharacterInventory,
         Character,
         Probability,
@@ -60,7 +60,7 @@ import { MembersModule } from './members/members.module';
     StreaksModule,
     StudiesModule,
     StatisticsModule,
-    TransactionsModule,
+    TransactionRecordsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

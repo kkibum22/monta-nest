@@ -13,8 +13,8 @@ import { CommonEntity } from 'src/common/entities/common.entity';
 import { CharacterInventory } from 'src/common/entities/character-inventory.entity';
 import { StudyCategory } from 'src/studies/entities/study-category.entity';
 import { Statistic } from 'src/statistics/entities/statistic.entity';
-import { Transaction } from 'src/transactions/entities/transaction.entity';
 import { StreakColorChangePermission } from 'src/streaks/entities/streak-color-change-permission.entity';
+import { TransactionRecord } from 'src/transaction-records/entities/transaction-record.entity';
 
 @Entity()
 export class Member extends CommonEntity {
@@ -78,8 +78,11 @@ export class Member extends CommonEntity {
   @JoinColumn({ name: 'statistic_id' })
   statistic: Statistic;
 
-  @OneToMany(() => Transaction, (transaction) => transaction.member)
-  transactions: Transaction[];
+  @OneToMany(
+    () => TransactionRecord,
+    (transactionRecord) => transactionRecord.member,
+  )
+  transaction_records: TransactionRecord[];
 
   @OneToOne(
     () => StreakColorChangePermission,
