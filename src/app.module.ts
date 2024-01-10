@@ -22,6 +22,7 @@ import { StudyCategory } from './studies/entities/study-category.entity';
 import { StudyRecord } from './studies/entities/study-record.entity';
 import { Transaction } from './transactions/entities/transaction.entity';
 import { Probability } from './common/entities/probability.entity';
+import { StreakColorChangePermission } from './streaks/entities/streak-color-change-permission.entity';
 
 @Module({
   imports: [
@@ -39,8 +40,6 @@ import { Probability } from './common/entities/probability.entity';
       entities: [
         User,
         Account,
-        CharacterInventory,
-        Character,
         Egg,
         EggInventory,
         Statistic,
@@ -52,6 +51,7 @@ import { Probability } from './common/entities/probability.entity';
         CharacterInventory,
         Character,
         Probability,
+        StreakColorChangePermission,
       ],
       synchronize: true,
     }),
