@@ -10,10 +10,11 @@ import {
 import { UserRole } from './user-role.enum';
 import { Account } from 'src/auth/entities/account.entity';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { CharacterInventory } from 'src/common/entities/character_inventory.entity';
+import { CharacterInventory } from 'src/common/entities/character-inventory.entity';
 import { StudyCategory } from 'src/studies/entities/study-category.entity';
 import { Statistic } from 'src/statistics/entities/statistic.entity';
 import { Transaction } from 'src/transactions/entities/transaction.entity';
+import { StreakColorChangePermission } from 'src/streaks/entities/streak-color-change-permission.entity';
 
 @Entity()
 export class User extends CommonEntity {
@@ -68,7 +69,7 @@ export class User extends CommonEntity {
     () => CharacterInventory,
     (characterInventory) => characterInventory.user,
   )
-  characterInventories: CharacterInventory[];
+  character_inventories: CharacterInventory[];
 
   @OneToMany(() => StudyCategory, (studyCategory) => studyCategory.user)
   study_categories: StudyCategory[];
@@ -78,4 +79,10 @@ export class User extends CommonEntity {
 
   @OneToMany(() => Transaction, (transaction) => transaction.user)
   transactions: Transaction[];
+
+  @OneToOne(
+    () => StreakColorChangePermission,
+    (streakColorChangePermission) => streakColorChangePermission.user,
+  )
+  streak_color_change_permission: StreakColorChangePermission;
 }
