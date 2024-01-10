@@ -12,6 +12,8 @@ import { Character } from './common/entities/character.entity';
 import { StreaksModule } from './streaks/streaks.module';
 import { StudiesModule } from './studies/studies.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import { Egg } from './common/entities/egg.entity';
+import { EggInventory } from './common/entities/egg_inventory.entity';
 import { TransactionsModule } from './transactions/transactions.module';
 import { Statistic } from './statistics/entities/statistic.entity';
 import { StudyStreak } from './streaks/entities/study_streak.entity';
@@ -36,6 +38,10 @@ import { Transaction } from './transactions/entities/transaction.entity';
       entities: [
         User,
         Account,
+        CharacterInventory,
+        Character,
+        Egg,
+        EggInventory,
         Statistic,
         StudyStreak,
         Palette,
@@ -52,6 +58,11 @@ import { Transaction } from './transactions/entities/transaction.entity';
     StreaksModule,
     StudiesModule,
     StatisticsModule,
+    StudyCategory,
+    StudyRecord,
+    StudyStreak,
+    Palette,
+    Statistic,
     TransactionsModule,
   ],
   controllers: [AppController],

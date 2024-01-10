@@ -1,10 +1,10 @@
 import { IsNumber, IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { CharacterInventory } from './character_inventory.entity';
+import { EggInventory } from './egg_inventory.entity';
 
 @Entity()
-export class Character extends CommonEntity {
+export class Egg extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -12,25 +12,26 @@ export class Character extends CommonEntity {
   @IsString()
   name: string;
 
-  @Column({ nullable: true })
+  @Column()
   @IsString()
   description: string;
 
   @Column()
-  @IsString()
-  grade: string;
+  @IsNumber()
+  required_study_time: number;
+
+  @Column()
+  @IsNumber()
+  purchase_price: number;
 
   @Column()
   @IsString()
   image_url: string;
 
   @Column()
-  @IsNumber()
-  sell_price: number;
+  @IsString()
+  grade: string;
 
-  @OneToMany(
-    () => CharacterInventory,
-    (characterInventory) => characterInventory.character,
-  )
-  character_inventories: CharacterInventory[];
+  @OneToMany(() => EggInventory, (eggInventory) => eggInventory.egg)
+  egg_inventories: EggInventory[];
 }
