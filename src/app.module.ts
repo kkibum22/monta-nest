@@ -9,16 +9,18 @@ import { AuthModule } from './auth/auth.module';
 import { Account } from './auth/entities/account.entity';
 import { CharacterInventory } from './common/entities/character_inventory.entity';
 import { Character } from './common/entities/character.entity';
-import { StreakModule } from './streak/streak.module';
-import { StudyModule } from './study/study.module';
+import { StreaksModule } from './streaks/streaks.module';
+import { StudiesModule } from './studies/studies.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { Egg } from './common/entities/egg.entity';
 import { EggInventory } from './common/entities/egg_inventory.entity';
-import { StudyCategory } from './study/entities/study-category.entity';
-import { StudyRecord } from './study/entities/study-record.entity';
-import { StudyStreak } from './streak/entities/study_streak.entity';
-import { Palette } from './streak/entities/palette.entity';
+import { TransactionsModule } from './transactions/transactions.module';
 import { Statistic } from './statistics/entities/statistic.entity';
+import { StudyStreak } from './streaks/entities/study_streak.entity';
+import { Palette } from './streaks/entities/palette.entity';
+import { StudyCategory } from './studies/entities/study-category.entity';
+import { StudyRecord } from './studies/entities/study-record.entity';
+import { Transaction } from './transactions/entities/transaction.entity';
 
 @Module({
   imports: [
@@ -40,19 +42,28 @@ import { Statistic } from './statistics/entities/statistic.entity';
         Character,
         Egg,
         EggInventory,
+        Statistic,
+        StudyStreak,
+        Palette,
+        StudyCategory,
+        StudyRecord,
+        Transaction,
+        CharacterInventory,
+        Character,
       ],
       synchronize: true,
     }),
     UsersModule,
     AuthModule,
-    StreakModule,
-    StudyModule,
+    StreaksModule,
+    StudiesModule,
     StatisticsModule,
     StudyCategory,
     StudyRecord,
     StudyStreak,
     Palette,
     Statistic,
+    TransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
