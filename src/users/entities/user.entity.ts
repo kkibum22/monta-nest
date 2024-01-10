@@ -12,6 +12,7 @@ import { Account } from 'src/auth/entities/account.entity';
 import { CommonEntity } from 'src/common/entities/common.entity';
 import { StudyCategory } from 'src/study/entities/study-category.entity';
 import { Statistic } from 'src/statistics/entities/statistic.entity';
+import { Transaction } from 'src/transactions/entities/transaction.entity';
 
 @Entity()
 export class User extends CommonEntity {
@@ -67,4 +68,7 @@ export class User extends CommonEntity {
 
   @OneToOne(() => Statistic, (statistic) => statistic.user)
   statistic: Statistic;
+
+  @OneToMany(() => Transaction, (transaction) => transaction.user)
+  transactions: Transaction[];
 }

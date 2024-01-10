@@ -10,6 +10,7 @@ import { Account } from './auth/entities/account.entity';
 import { StreakModule } from './streak/streak.module';
 import { StudyModule } from './study/study.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { StatisticsModule } from './statistics/statistics.module';
     StreakModule,
     StudyModule,
     StatisticsModule,
+    TransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
