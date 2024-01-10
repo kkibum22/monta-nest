@@ -13,7 +13,7 @@ import { Member } from 'src/members/entities/member.entity';
 @Entity()
 export class TransactionRecord extends CommonEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  transaction_record_id: number;
 
   @Column({
     type: 'enum',

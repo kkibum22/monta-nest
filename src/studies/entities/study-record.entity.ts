@@ -13,7 +13,7 @@ import { Member } from 'src/members/entities/member.entity';
 @Entity()
 export class StudyRecord extends CommonEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  study_record_id: number;
 
   @Column()
   @IsNumber()
@@ -27,5 +27,6 @@ export class StudyRecord extends CommonEntity {
     () => StudyCategory,
     (studyCategory) => studyCategory.study_records,
   )
+  @JoinColumn({ name: 'study_category_id' })
   study_category: StudyCategory;
 }

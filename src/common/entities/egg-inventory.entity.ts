@@ -13,7 +13,7 @@ import { Member } from 'src/members/entities/member.entity';
 @Entity()
 export class EggInventory extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  egg_inventory_id: string;
 
   @Column()
   @IsNumber()

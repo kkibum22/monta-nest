@@ -12,7 +12,7 @@ import {
 @Entity()
 export class StreakColorChangePermission extends CommonEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  streak_color_change_permission_id: number;
 
   @Column()
   @IsNumber()

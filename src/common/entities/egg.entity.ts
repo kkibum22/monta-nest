@@ -6,7 +6,7 @@ import { EggInventory } from './egg-inventory.entity';
 @Entity()
 export class Egg extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  egg_id: string;
 
   @Column()
   @IsString()

@@ -12,7 +12,7 @@ import {
 @Entity()
 export class Statistic extends CommonEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  statistic_id: number;
 
   @Column({ default: 0 })
   @IsNumber()

@@ -7,7 +7,6 @@ import {
   JoinColumn,
   OneToMany,
 } from 'typeorm';
-import { MemberRole } from './user-role.enum';
 import { Account } from 'src/auth/entities/account.entity';
 import { CommonEntity } from 'src/common/entities/common.entity';
 import { CharacterInventory } from 'src/common/entities/character-inventory.entity';
@@ -16,11 +15,12 @@ import { Statistic } from 'src/statistics/entities/statistic.entity';
 import { StreakColorChangePermission } from 'src/streaks/entities/streak-color-change-permission.entity';
 import { TransactionRecord } from 'src/transaction-records/entities/transaction-record.entity';
 import { EggInventory } from 'src/common/entities/egg-inventory.entity';
+import { MemberRole } from './member-role.enum';
 
 @Entity()
 export class Member extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  member_id: string;
 
   @Column()
   @IsString()
