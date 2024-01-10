@@ -12,6 +12,13 @@ import { Character } from './common/entities/character.entity';
 import { StreakModule } from './streak/streak.module';
 import { StudyModule } from './study/study.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import { Egg } from './common/entities/egg.entity';
+import { EggInventory } from './common/entities/egg_inventory.entity';
+import { StudyCategory } from './study/entities/study-category.entity';
+import { StudyRecord } from './study/entities/study-record.entity';
+import { StudyStreak } from './streak/entities/study_streak.entity';
+import { Palette } from './streak/entities/palette.entity';
+import { Statistic } from './statistics/entities/statistic.entity';
 
 @Module({
   imports: [
@@ -26,7 +33,14 @@ import { StatisticsModule } from './statistics/statistics.module';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User, Account, CharacterInventory, Character],
+      entities: [
+        User,
+        Account,
+        CharacterInventory,
+        Character,
+        Egg,
+        EggInventory,
+      ],
       synchronize: true,
     }),
     UsersModule,
@@ -34,6 +48,11 @@ import { StatisticsModule } from './statistics/statistics.module';
     StreakModule,
     StudyModule,
     StatisticsModule,
+    StudyCategory,
+    StudyRecord,
+    StudyStreak,
+    Palette,
+    Statistic,
   ],
   controllers: [AppController],
   providers: [AppService],
