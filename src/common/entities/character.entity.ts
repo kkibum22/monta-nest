@@ -32,5 +32,5 @@ export class Character extends CommonEntity {
     () => CharacterInventory,
     (characterInventory) => characterInventory.character,
   )
-  characterInventory: CharacterInventory[];
+  characterInventories: CharacterInventory[];
 }

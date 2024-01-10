@@ -9,10 +9,10 @@ export class CharacterInventory extends CommonEntity {
   id: string;
 
   @ManyToOne(() => Character)
-  @JoinColumn({ name: 'CharacterId' })
+  @JoinColumn({ name: 'character_id' })
   character: Character;
 
   @ManyToOne(() => User)
-  @JoinColumn({ name: 'userId' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }

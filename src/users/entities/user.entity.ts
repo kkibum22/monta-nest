@@ -67,7 +67,8 @@ export class User extends CommonEntity {
     () => CharacterInventory,
     (characterInventory) => characterInventory.user,
   )
-  characterInventoryId: CharacterInventory[];
+  characterInventories: CharacterInventory[];
+
   @OneToMany(() => StudyCategory, (studyCategory) => studyCategory.user)
   study_categories: StudyCategory[];
 
