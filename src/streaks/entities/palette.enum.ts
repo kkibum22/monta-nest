@@ -1,5 +1,5 @@
 export enum PaletteGrade {
-  RARE,
-  EPIC,
-  LEGENDARY,
+  RARE = 'RARE',
+  EPIC = 'EPIC',
+  LEGENDARY = 'LEGENDARY',
 }

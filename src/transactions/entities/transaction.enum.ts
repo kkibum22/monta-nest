@@ -1,5 +1,5 @@
 export enum TransactionType {
-  PURCHASE,
-  SELL,
-  REWARD,
+  PURCHASE = 'PURCHASE',
+  SELL = 'SELL',
+  REWARD = 'REWARD',
 }
