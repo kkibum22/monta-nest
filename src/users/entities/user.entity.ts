@@ -1,9 +1,17 @@
 import { IsEnum, IsNumber, IsString } from 'class-validator';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { UserRole } from './user-role.enum';
+import { Account } from 'src/auth/entities/account.entity';
+import { CommonEntity } from 'src/common/entities/common.entity';
 
 @Entity()
-export class User {
+export class User extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -46,4 +54,8 @@ export class User {
   })
   @IsNumber()
   point: number;
+
+  @OneToOne(() => Account, (account) => account.user)
+  @JoinColumn()
+  account: Account;
 }
