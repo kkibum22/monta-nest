@@ -7,6 +7,8 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { Account } from './auth/entities/account.entity';
+import { CharacterInventoryId } from './common/entities/character_inventory_id.entity';
+import { Character } from './common/entities/character.entity';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { Account } from './auth/entities/account.entity';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User, Account],
+      entities: [User, Account, CharacterInventoryId, Character],
       synchronize: true,
     }),
     UsersModule,

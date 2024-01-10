@@ -5,10 +5,12 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import { UserRole } from './user-role.enum';
 import { Account } from 'src/auth/entities/account.entity';
 import { CommonEntity } from 'src/common/entities/common.entity';
+import { CharacterInventoryId } from 'src/common/entities/character_inventory_id.entity';
 
 @Entity()
 export class User extends CommonEntity {
@@ -58,4 +60,10 @@ export class User extends CommonEntity {
   @OneToOne(() => Account, (account) => account.user)
   @JoinColumn()
   account: Account;
+
+  @OneToMany(
+    () => CharacterInventoryId,
+    (characterInventoryId) => characterInventoryId.user
+  )
+  characterInventoryId: CharacterInventoryId[];
 }
