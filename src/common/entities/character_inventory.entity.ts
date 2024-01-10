@@ -4,7 +4,7 @@ import { Character } from './character.entity';
 import { CommonEntity } from './common.entity';
 
 @Entity()
-export class CharacterInventoryId extends CommonEntity {
+export class CharacterInventory extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

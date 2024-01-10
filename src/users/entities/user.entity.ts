@@ -10,7 +10,9 @@ import {
 import { UserRole } from './user-role.enum';
 import { Account } from 'src/auth/entities/account.entity';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { CharacterInventoryId } from 'src/common/entities/character_inventory_id.entity';
+import { CharacterInventory } from 'src/common/entities/character_inventory.entity';
+import { StudyCategory } from 'src/study/entities/study-category.entity';
+import { Statistic } from 'src/statistics/entities/statistic.entity';
 
 @Entity()
 export class User extends CommonEntity {
@@ -62,8 +64,13 @@ export class User extends CommonEntity {
   account: Account;
 
   @OneToMany(
-    () => CharacterInventoryId,
-    (characterInventoryId) => characterInventoryId.user
+    () => CharacterInventory,
+    (characterInventory) => characterInventory.user,
   )
-  characterInventoryId: CharacterInventoryId[];
+  characterInventoryId: CharacterInventory[];
+  @OneToMany(() => StudyCategory, (studyCategory) => studyCategory.user)
+  study_categories: StudyCategory[];
+
+  @OneToOne(() => Statistic, (statistic) => statistic.user)
+  statistic: Statistic;
 }

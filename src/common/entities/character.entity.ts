@@ -1,7 +1,7 @@
 import { IsNumber, IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { CharacterInventoryId } from './character_inventory_id.entity';
+import { CharacterInventory } from './character_inventory.entity';
 
 @Entity()
 export class Character extends CommonEntity {
@@ -29,8 +29,8 @@ export class Character extends CommonEntity {
   sell_price: number;
 
   @OneToMany(
-    () => CharacterInventoryId,
-    (characterInventoryId) => characterInventoryId.character
+    () => CharacterInventory,
+    (characterInventory) => characterInventory.character,
   )
-  characterInventoryId: CharacterInventoryId[];
+  characterInventory: CharacterInventory[];
 }
