@@ -8,6 +8,7 @@ import { User } from './users/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { Account } from './auth/entities/account.entity';
 import { StudyModule } from './study/study.module';
+import { StatisticsModule } from './statistics/statistics.module';
 import { StudyModule } from './study/study.module';
 
 @Module({
@@ -29,6 +30,7 @@ import { StudyModule } from './study/study.module';
     UsersModule,
     AuthModule,
     StudyModule,
+    StatisticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

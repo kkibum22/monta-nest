@@ -7,7 +7,7 @@ import { StudyCategory } from './study-category.entity';
 @Entity()
 export class StudyRecord extends CommonEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column()
   @IsNumber()
