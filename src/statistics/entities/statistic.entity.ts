@@ -1,7 +1,13 @@
 import { IsNumber } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
 import { User } from 'src/users/entities/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity()
 export class Statistic extends CommonEntity {
@@ -17,5 +23,6 @@ export class Statistic extends CommonEntity {
   pay_egg_count: number;
 
   @OneToOne(() => User, (user) => user.statistic)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }

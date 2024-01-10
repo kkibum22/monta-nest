@@ -1,6 +1,12 @@
 import { IsEnum, IsNumber, IsString } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { TransactionType } from './transaction.enum';
 import { User } from 'src/users/entities/user.entity';
 
@@ -33,5 +39,6 @@ export class Transaction extends CommonEntity {
   notes: string;
 
   @ManyToOne(() => User, (user) => user.transactions)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }

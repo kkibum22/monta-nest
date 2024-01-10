@@ -1,6 +1,6 @@
 import { IsEnum, IsString } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { PaletteGrade } from './palette.enum';
 import { StudyStreak } from './study-streak.entity';
 
@@ -37,6 +37,6 @@ export class Palette extends CommonEntity {
   @IsString()
   darker_color: string;
 
-  @ManyToOne(() => StudyStreak, (studyStreak) => studyStreak.palette)
+  @OneToMany(() => StudyStreak, (studyStreak) => studyStreak.palette)
   study_streaks: StudyStreak[];
 }
