@@ -1,6 +1,5 @@
 import { IsBoolean, IsString } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { User } from 'src/users/entities/user.entity';
 import {
   Entity,
   Column,
@@ -10,6 +9,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { StudyRecord } from './study-record.entity';
+import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
 export class StudyCategory extends CommonEntity {
@@ -24,9 +24,9 @@ export class StudyCategory extends CommonEntity {
   @IsBoolean()
   hidden: boolean;
 
-  @ManyToOne(() => User, (user) => user.study_categories)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  @ManyToOne(() => Member, (member) => member.study_categories)
+  @JoinColumn({ name: 'member_id' })
+  member: Member;
 
   @OneToMany(() => StudyRecord, (studyRecord) => studyRecord.study_category)
   study_records: StudyCategory[];

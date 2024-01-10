@@ -1,4 +1,3 @@
-import { User } from 'src/users/entities/user.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -9,6 +8,7 @@ import {
 import { CommonEntity } from './common.entity';
 import { IsNumber } from 'class-validator';
 import { Egg } from './egg.entity';
+import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
 export class EggInventory extends CommonEntity {
@@ -23,7 +23,7 @@ export class EggInventory extends CommonEntity {
   @JoinColumn({ name: 'egg_id' })
   egg: Egg;
 
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  @ManyToOne(() => Member)
+  @JoinColumn({ name: 'member_id' })
+  member: Member;
 }

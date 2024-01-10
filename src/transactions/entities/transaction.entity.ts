@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { TransactionType } from './transaction.enum';
-import { User } from 'src/users/entities/user.entity';
+import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
 export class Transaction extends CommonEntity {
@@ -38,7 +38,7 @@ export class Transaction extends CommonEntity {
   @IsString()
   notes: string;
 
-  @ManyToOne(() => User, (user) => user.transactions)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  @ManyToOne(() => Member, (member) => member.transactions)
+  @JoinColumn({ name: 'member_id' })
+  member: Member;
 }

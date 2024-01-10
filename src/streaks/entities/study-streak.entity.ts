@@ -1,6 +1,5 @@
 import { IsNumber } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
-import { User } from 'src/users/entities/user.entity';
 import {
   Entity,
   Column,
@@ -10,6 +9,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { Palette } from './palette.entity';
+import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
 export class StudyStreak extends CommonEntity {
@@ -24,9 +24,9 @@ export class StudyStreak extends CommonEntity {
   @IsNumber()
   longest_streak: number;
 
-  @OneToOne(() => User, (user) => user.account)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  @OneToOne(() => Member, (member) => member.account)
+  @JoinColumn({ name: 'member' })
+  member: Member;
 
   @ManyToOne(
     () => Palette,

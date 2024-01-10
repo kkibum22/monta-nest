@@ -3,8 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
-import { User } from './users/entities/user.entity';
+import { Member } from './members/entities/member.entity';
 import { AuthModule } from './auth/auth.module';
 import { Account } from './auth/entities/account.entity';
 import { CharacterInventory } from './common/entities/character-inventory.entity';
@@ -23,6 +22,7 @@ import { StudyRecord } from './studies/entities/study-record.entity';
 import { Transaction } from './transactions/entities/transaction.entity';
 import { Probability } from './common/entities/probability.entity';
 import { StreakColorChangePermission } from './streaks/entities/streak-color-change-permission.entity';
+import { MembersModule } from './members/members.module';
 
 @Module({
   imports: [
@@ -38,7 +38,7 @@ import { StreakColorChangePermission } from './streaks/entities/streak-color-cha
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: [
-        User,
+        Member,
         Account,
         Egg,
         EggInventory,
@@ -55,7 +55,7 @@ import { StreakColorChangePermission } from './streaks/entities/streak-color-cha
       ],
       synchronize: true,
     }),
-    UsersModule,
+    MembersModule,
     AuthModule,
     StreaksModule,
     StudiesModule,
