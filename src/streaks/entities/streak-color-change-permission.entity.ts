@@ -1,7 +1,13 @@
 import { IsNumber } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
 import { User } from 'src/users/entities/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity()
 export class StreakColorChangePermission extends CommonEntity {
@@ -13,5 +19,6 @@ export class StreakColorChangePermission extends CommonEntity {
   available_change: number;
 
   @OneToOne(() => User, (user) => user.streak_color_change_permission)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }

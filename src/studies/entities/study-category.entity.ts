@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import { StudyRecord } from './study-record.entity';
 
@@ -24,6 +25,7 @@ export class StudyCategory extends CommonEntity {
   hidden: boolean;
 
   @ManyToOne(() => User, (user) => user.study_categories)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @OneToMany(() => StudyRecord, (studyRecord) => studyRecord.study_category)

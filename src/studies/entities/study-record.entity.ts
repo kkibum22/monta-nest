@@ -1,7 +1,13 @@
 import { IsNumber } from 'class-validator';
 import { CommonEntity } from 'src/common/entities/common.entity';
 import { User } from 'src/users/entities/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { StudyCategory } from './study-category.entity';
 
 @Entity()
@@ -14,6 +20,7 @@ export class StudyRecord extends CommonEntity {
   duration: number;
 
   @ManyToOne(() => User, (user) => user.study_categories)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @ManyToOne(

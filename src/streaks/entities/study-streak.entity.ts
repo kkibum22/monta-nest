@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Palette } from './palette.entity';
 
@@ -24,6 +25,7 @@ export class StudyStreak extends CommonEntity {
   longest_streak: number;
 
   @OneToOne(() => User, (user) => user.account)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @ManyToOne(
@@ -32,5 +34,6 @@ export class StudyStreak extends CommonEntity {
       palette.study_streaks;
     },
   )
+  @JoinColumn({ name: 'palette_id' })
   palette: Palette;
 }

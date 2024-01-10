@@ -62,7 +62,7 @@ export class User extends CommonEntity {
   point: number;
 
   @OneToOne(() => Account, (account) => account.user)
-  @JoinColumn()
+  @JoinColumn({ name: 'account_id' })
   account: Account;
 
   @OneToMany(
@@ -75,6 +75,7 @@ export class User extends CommonEntity {
   study_categories: StudyCategory[];
 
   @OneToOne(() => Statistic, (statistic) => statistic.user)
+  @JoinColumn({ name: 'statistic_id' })
   statistic: Statistic;
 
   @OneToMany(() => Transaction, (transaction) => transaction.user)
@@ -84,5 +85,6 @@ export class User extends CommonEntity {
     () => StreakColorChangePermission,
     (streakColorChangePermission) => streakColorChangePermission.user,
   )
+  @JoinColumn({ name: 'streak_color_change_permission_id' })
   streak_color_change_permission: StreakColorChangePermission;
 }
