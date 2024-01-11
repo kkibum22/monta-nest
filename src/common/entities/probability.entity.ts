@@ -4,14 +4,14 @@ import { CommonEntity } from 'src/common/entities/common.entity';
 
 @Entity()
 export class Probability extends CommonEntity {
-  @PrimaryGeneratedColumn('uuid')
-  probability_id: string;
+  @PrimaryGeneratedColumn({ type: 'bigint' })
+  probability_id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 10 })
   @IsString()
   egg_grade: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 10 })
   @IsString()
   character_grade: string;
 

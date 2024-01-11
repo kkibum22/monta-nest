@@ -11,14 +11,17 @@ import {
 
 @Entity()
 export class StreakColorChangePermission extends CommonEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'bigint' })
   streak_color_change_permission_id: number;
 
   @Column()
   @IsNumber()
   available_change: number;
 
-  @OneToOne(() => Member, (member) => member.streak_color_change_permission)
+  @OneToOne(() => Member, (member) => member.streak_color_change_permission, {
+    nullable: false,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'member_id' })
   member: Member;
 }

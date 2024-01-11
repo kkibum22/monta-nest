@@ -17,13 +17,13 @@ export class EggInventory extends CommonEntity {
 
   @Column()
   @IsNumber()
-  sell_price: number;
+  progress: number;
 
-  @ManyToOne(() => Egg)
+  @ManyToOne(() => Egg, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'egg_id' })
   egg: Egg;
 
-  @ManyToOne(() => Member)
+  @ManyToOne(() => Member, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'member_id' })
   member: Member;
 }

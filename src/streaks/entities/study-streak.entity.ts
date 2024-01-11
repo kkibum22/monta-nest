@@ -13,7 +13,7 @@ import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
 export class StudyStreak extends CommonEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'bigint' })
   study_streak_id: number;
 
   @Column()
@@ -24,8 +24,11 @@ export class StudyStreak extends CommonEntity {
   @IsNumber()
   longest_streak: number;
 
-  @OneToOne(() => Member, (member) => member.account)
-  @JoinColumn({ name: 'member' })
+  @OneToOne(() => Member, (member) => member.study_streak, {
+    nullable: false,
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'member_id' })
   member: Member;
 
   @ManyToOne(
@@ -33,6 +36,7 @@ export class StudyStreak extends CommonEntity {
     (palette) => {
       palette.study_streaks;
     },
+    { nullable: false },
   )
   @JoinColumn({ name: 'palette_id' })
   palette: Palette;

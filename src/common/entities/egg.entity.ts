@@ -8,7 +8,7 @@ export class Egg extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
   egg_id: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100 })
   @IsString()
   name: string;
 
@@ -28,7 +28,7 @@ export class Egg extends CommonEntity {
   @IsString()
   image_url: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 10 })
   @IsString()
   grade: string;
 

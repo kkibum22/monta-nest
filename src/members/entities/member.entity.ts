@@ -16,17 +16,18 @@ import { StreakColorChangePermission } from 'src/streaks/entities/streak-color-c
 import { TransactionRecord } from 'src/transaction-records/entities/transaction-record.entity';
 import { EggInventory } from 'src/common/entities/egg-inventory.entity';
 import { MemberRole } from './member-role.enum';
+import { StudyStreak } from 'src/streaks/entities/study-streak.entity';
 
 @Entity()
 export class Member extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
   member_id: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100 })
   @IsString()
   nickname: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100 })
   @IsString()
   email: string;
 
@@ -46,12 +47,15 @@ export class Member extends CommonEntity {
 
   @Column({
     nullable: true,
+    type: 'bigint',
   })
   @IsString()
   active_record_id: string;
 
   @Column({
     nullable: true,
+    type: 'varchar',
+    length: 36,
   })
   @IsString()
   active_egg_id: string;
@@ -62,7 +66,10 @@ export class Member extends CommonEntity {
   @IsNumber()
   point: number;
 
-  @OneToOne(() => Account, (account) => account.member)
+  @OneToOne(() => Account, (account) => account.member, {
+    nullable: false,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'account_id' })
   account: Account;
 
@@ -78,10 +85,6 @@ export class Member extends CommonEntity {
   @OneToMany(() => StudyCategory, (studyCategory) => studyCategory.member)
   study_categories: StudyCategory[];
 
-  @OneToOne(() => Statistic, (statistic) => statistic.member)
-  @JoinColumn({ name: 'statistic_id' })
-  statistic: Statistic;
-
   @OneToMany(
     () => TransactionRecord,
     (transactionRecord) => transactionRecord.member,
@@ -94,4 +97,12 @@ export class Member extends CommonEntity {
   )
   @JoinColumn({ name: 'streak_color_change_permission_id' })
   streak_color_change_permission: StreakColorChangePermission;
+
+  @OneToOne(() => Statistic, (statistic) => statistic.member)
+  @JoinColumn({ name: 'statistic_id' })
+  statistic: Statistic;
+
+  @OneToOne(() => StudyStreak, (studyStreak) => studyStreak.member, {})
+  @JoinColumn({ name: 'study_streak_id' })
+  study_streak: StudyStreak;
 }
