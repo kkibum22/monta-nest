@@ -9,11 +9,24 @@ export class Account extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
   account_id: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    length: 100,
+  })
+  @IsString()
+  name: string;
+
+  @Column({
+    type: 'varchar',
+    length: 100,
+  })
   @IsString()
   password: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    length: 100,
+  })
   @IsString()
   email: string;
 

@@ -8,7 +8,10 @@ export class Character extends CommonEntity {
   @PrimaryGeneratedColumn('uuid')
   character_id: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    length: 100,
+  })
   @IsString()
   name: string;
 
@@ -16,7 +19,10 @@ export class Character extends CommonEntity {
   @IsString()
   description: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    length: 10,
+  })
   @IsString()
   grade: string;
 

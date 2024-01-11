@@ -13,21 +13,24 @@ import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
 export class StudyCategory extends CommonEntity {
-  @PrimaryGeneratedColumn()
-  study_category_id: string;
+  @PrimaryGeneratedColumn({ type: 'bigint' })
+  study_category_id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 50 })
   @IsString()
   subject: string;
 
-  @Column()
+  @Column({ type: 'bit' })
   @IsBoolean()
   hidden: boolean;
 
-  @ManyToOne(() => Member, (member) => member.study_categories)
+  @ManyToOne(() => Member, (member) => member.study_categories, {
+    nullable: false,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'member_id' })
   member: Member;
 
   @OneToMany(() => StudyRecord, (studyRecord) => studyRecord.study_category)
-  study_records: StudyCategory[];
+  study_records: StudyRecord[];
 }

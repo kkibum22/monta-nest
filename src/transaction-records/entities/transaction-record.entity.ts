@@ -12,7 +12,7 @@ import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
 export class TransactionRecord extends CommonEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'bigint' })
   transaction_record_id: number;
 
   @Column({
@@ -38,7 +38,10 @@ export class TransactionRecord extends CommonEntity {
   @IsString()
   notes: string;
 
-  @ManyToOne(() => Member, (member) => member.transaction_records)
+  @ManyToOne(() => Member, (member) => member.transaction_records, {
+    nullable: false,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'member_id' })
   member: Member;
 }

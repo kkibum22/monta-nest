@@ -11,18 +11,21 @@ import {
 
 @Entity()
 export class Statistic extends CommonEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'bigint' })
   statistic_id: number;
 
   @Column({ default: 0 })
   @IsNumber()
   total_time: number;
 
-  @Column({ nullable: true })
+  @Column()
   @IsNumber()
   pay_egg_count: number;
 
-  @OneToOne(() => Member, (member) => member.statistic)
+  @OneToOne(() => Member, (member) => member.statistic, {
+    onDelete: 'CASCADE',
+    nullable: false,
+  })
   @JoinColumn({ name: 'member_id' })
   member: Member;
 }

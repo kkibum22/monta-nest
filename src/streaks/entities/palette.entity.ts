@@ -6,7 +6,7 @@ import { StudyStreak } from './study-streak.entity';
 
 @Entity()
 export class Palette extends CommonEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'bigint' })
   palette_id: number;
 
   @Column({
@@ -17,23 +17,23 @@ export class Palette extends CommonEntity {
   @IsEnum(PaletteGrade)
   grade: PaletteGrade;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100 })
   @IsString()
   name: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 16 })
   @IsString()
   light_color: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 16 })
   @IsString()
   normal_color: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 16 })
   @IsString()
   dark_color: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 16 })
   @IsString()
   darker_color: string;
 

@@ -5,14 +5,14 @@ import { CommonEntity } from './common.entity';
 
 @Entity()
 export class CharacterInventory extends CommonEntity {
-  @PrimaryGeneratedColumn('uuid')
-  character_inventory_id: string;
+  @PrimaryGeneratedColumn({ type: 'bigint' })
+  character_inventory_id: number;
 
-  @ManyToOne(() => Character)
+  @ManyToOne(() => Character, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'character_id' })
   character: Character;
 
-  @ManyToOne(() => Member)
+  @ManyToOne(() => Member, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'member_id' })
   member: Member;
 }
