@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { CreateAccountDto } from './dtos/create-account.dto';
 import { AuthService } from './auth.service';
 
@@ -6,11 +6,17 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @HttpCode(201)
   @Post('register')
   async register(@Body() createAccountDto: CreateAccountDto) {
     const createdAccount =
       await this.authService.registerAccount(createAccountDto);
 
-    return createdAccount.account_id;
+    return {
+      status: 201,
+      data: {
+        account_id: createdAccount.account_id,
+      },
+    };
   }
 }
