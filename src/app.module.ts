@@ -18,11 +18,12 @@ import { StudyStreak } from './streaks/entities/study-streak.entity';
 import { Palette } from './streaks/entities/palette.entity';
 import { StudyCategory } from './studies/entities/study-category.entity';
 import { StudyRecord } from './studies/entities/study-record.entity';
-import { Probability } from './common/entities/probability.entity';
 import { StreakColorChangePermission } from './streaks/entities/streak-color-change-permission.entity';
 import { MembersModule } from './members/members.module';
 import { TransactionRecord } from './transaction-records/entities/transaction-record.entity';
 import { TransactionRecordsModule } from './transaction-records/transaction-records.module';
+import { ProbabilitiesModule } from './probabilities/probabilities.module';
+import { Probability } from './probabilities/entities/probability.entity';
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ import { TransactionRecordsModule } from './transaction-records/transaction-reco
     StudiesModule,
     StatisticsModule,
     TransactionRecordsModule,
+    ProbabilitiesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
