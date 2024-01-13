@@ -18,43 +18,49 @@ export class ProbabilitiesController {
 
   @Get()
   @HttpCode(200)
-  getAllProbabilities() {
-    return this.probabilitiesService.findAll();
+  async getAllProbabilities() {
+    const result = await this.probabilitiesService.findAll();
+    return {
+      status: 200,
+      data: { probabilities: result },
+    };
   }
 
   @Post()
   @HttpCode(201)
-  createProbability(@Body() createProbabilityData: CreateProbabilityDto) {
-    return this.probabilitiesService.create(createProbabilityData);
+  async createProbability(@Body() createProbabilityData: CreateProbabilityDto) {
+    const result = await this.probabilitiesService.create(
+      createProbabilityData,
+    );
     return {
       status: 201,
-      data: { probability_id: Number },
+      data: { probability_id: result.probability_id },
     };
   }
 
-  @Patch('probability_id')
-  @HttpCode(200)
-  updateProbability(
+  @Patch(':probability_id')
+  @HttpCode(201)
+  async updateProbability(
     @Param('probability_id') probability_id: number,
     @Body() updateProbabilityData: UpdateProbabilityDto,
   ) {
-    return this.probabilitiesService.update(
+    const result = await this.probabilitiesService.update(
       probability_id,
       updateProbabilityData,
     );
     return {
       status: 201,
-      data: { probability_id: Number },
+      data: { probability: result },
     };
   }
 
-  @Delete('probability_id')
+  @Delete(':probability_id')
   @HttpCode(204)
-  deleteProbability(@Param('probability_id') probability_id: number) {
-    return this.probabilitiesService.delete(probability_id);
+  async deleteProbability(@Param('probability_id') probability_id: number) {
+    await this.probabilitiesService.delete(probability_id);
     return {
       status: 204,
-      data: { probability_id: Number },
+      data: null,
     };
   }
 }
