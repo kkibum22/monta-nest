@@ -6,12 +6,10 @@ import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { JWTPayload } from 'src/common/interfaces/jwt-payload';
 import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
     @InjectRepository(Account)
     private accountsRepository: Repository<Account>,
@@ -51,15 +49,12 @@ export class AuthService {
 
   async login(account: any) {
     const payload: JWTPayload = {
-      sub: account._id,
+      sub: account.account_id,
       email: account.email,
       role: account.role,
     };
     return {
-      access_token: this.jwtService.sign(payload, {
-        secret: this.configService.get('JWT_SECRET'),
-        expiresIn: '20s',
-      }),
+      access_token: this.jwtService.sign(payload),
     };
   }
 

@@ -11,6 +11,8 @@ import { CreateAccountDto } from './dtos/create-account.dto';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { Public } from './decorators/public.decorator';
+import { Roles } from './decorators/roles.decorator';
+import { MemberRole } from 'src/members/entities/member-role.enum';
 
 @Controller('auth')
 export class AuthController {
@@ -46,11 +48,17 @@ export class AuthController {
   }
 
   // 임시
+  @Roles(MemberRole.ADMIN)
   @Get('profile')
   async getProfile(@Request() req) {
     const account = await this.authService.findOneById(req.user.sub);
     // eslint-disable-next-line
     const { password: _, ...readOnlyData } = account;
-    return readOnlyData;
+    return {
+      status: 200,
+      data: {
+        ...readOnlyData,
+      },
+    };
   }
 }

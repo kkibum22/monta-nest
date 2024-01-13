@@ -11,9 +11,11 @@ import { JwtStrategy } from './strategies/jwt-strategy';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Account]),
-    JwtModule.register({
-      secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: process.env.JWT_EXPIRE },
+    JwtModule.registerAsync({
+      useFactory: async () => ({
+        secret: process.env.JWT_SECRET,
+        signOptions: { expiresIn: process.env.JWT_EXPIRE },
+      }),
     }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
