@@ -39,7 +39,7 @@ export class ProbabilitiesController {
   }
 
   @Patch(':probability_id')
-  @HttpCode(201)
+  @HttpCode(200)
   async updateProbability(
     @Param('probability_id') probability_id: number,
     @Body() updateProbabilityData: UpdateProbabilityDto,
@@ -49,7 +49,7 @@ export class ProbabilitiesController {
       updateProbabilityData,
     );
     return {
-      status: 201,
+      status: 200,
       data: { probability: result },
     };
   }
