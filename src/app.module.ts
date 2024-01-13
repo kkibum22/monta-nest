@@ -16,7 +16,7 @@ import { EggInventory } from './common/entities/egg-inventory.entity';
 import { Statistic } from './statistics/entities/statistic.entity';
 import { StudyStreak } from './streaks/entities/study-streak.entity';
 import { Palette } from './streaks/entities/palette.entity';
-import { StudyCategory } from './studies/entities/study-category.entity';
+import { StudyCategory } from './study-categories/entities/study-category.entity';
 import { StudyRecord } from './studies/entities/study-record.entity';
 import { StreakColorChangePermission } from './streaks/entities/streak-color-change-permission.entity';
 import { MembersModule } from './members/members.module';
@@ -28,6 +28,7 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { RolesGuard } from './auth/guards/roles.guard';
 import { ProbabilitiesModule } from './probabilities/probabilities.module';
 import { Probability } from './probabilities/entities/probability.entity';
+import { StudyCategoriesModule } from './study-categories/study-categories.module';
 
 @Module({
   imports: [
@@ -67,6 +68,7 @@ import { Probability } from './probabilities/entities/probability.entity';
     StatisticsModule,
     TransactionRecordsModule,
     ProbabilitiesModule,
+    StudyCategoriesModule,
   ],
   controllers: [AppController],
   providers: [

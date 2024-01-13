@@ -8,7 +8,7 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-import { StudyRecord } from './study-record.entity';
+import { StudyRecord } from '../../studies/entities/study-record.entity';
 import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
