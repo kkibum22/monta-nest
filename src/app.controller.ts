@@ -1,12 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Req } from '@nestjs/common';
+import { MembersService } from './members/members.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly memberService: MembersService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('me')
+  async getMe(@Req() req) {
+    const member = await this.memberService.findOneByAccountId(req.user.sub);
+    return {
+      status: 200,
+      data: {
+        member,
+      },
+    };
   }
 }

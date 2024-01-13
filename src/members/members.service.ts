@@ -39,4 +39,15 @@ export class MembersService {
 
     return await this.membersRepository.save(newMember);
   }
+
+  async findOneByAccountId(account_id: string) {
+    const member = await this.membersRepository.findOne({
+      where: {
+        account: {
+          account_id,
+        },
+      },
+    });
+    return member;
+  }
 }
