@@ -1,12 +1,23 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { CreateAccountDto } from './dtos/create-account.dto';
 import { AuthService } from './auth.service';
+import { LocalAuthGuard } from './guards/local-auth.guard';
+import { Public } from './decorators/public.decorator';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @HttpCode(201)
+  @Public()
   @Post('register')
   async register(@Body() createAccountDto: CreateAccountDto) {
     const createdAccount =
@@ -18,5 +29,28 @@ export class AuthController {
         account_id: createdAccount.account_id,
       },
     };
+  }
+
+  @HttpCode(200)
+  @Public()
+  @UseGuards(LocalAuthGuard)
+  @Post('login')
+  async login(@Request() req) {
+    const result = await this.authService.login(req.user);
+    return {
+      status: 200,
+      data: {
+        ...result,
+      },
+    };
+  }
+
+  // 임시
+  @Get('profile')
+  async getProfile(@Request() req) {
+    const account = await this.authService.findOneById(req.user.sub);
+    // eslint-disable-next-line
+    const { password: _, ...readOnlyData } = account;
+    return readOnlyData;
   }
 }

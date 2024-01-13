@@ -23,8 +23,10 @@ import { StreakColorChangePermission } from './streaks/entities/streak-color-cha
 import { MembersModule } from './members/members.module';
 import { TransactionRecord } from './transaction-records/entities/transaction-record.entity';
 import { TransactionRecordsModule } from './transaction-records/transaction-records.module';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { HttpExceptionFilter } from './common/http-exception/http-exception.filter';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { RolesGuard } from './auth/guards/roles.guard';
 
 @Module({
   imports: [
@@ -67,6 +69,14 @@ import { HttpExceptionFilter } from './common/http-exception/http-exception.filt
   controllers: [AppController],
   providers: [
     AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
