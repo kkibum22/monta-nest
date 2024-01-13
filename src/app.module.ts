@@ -22,6 +22,10 @@ import { StreakColorChangePermission } from './streaks/entities/streak-color-cha
 import { MembersModule } from './members/members.module';
 import { TransactionRecord } from './transaction-records/entities/transaction-record.entity';
 import { TransactionRecordsModule } from './transaction-records/transaction-records.module';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
+import { HttpExceptionFilter } from './common/http-exception/http-exception.filter';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { RolesGuard } from './auth/guards/roles.guard';
 import { ProbabilitiesModule } from './probabilities/probabilities.module';
 import { Probability } from './probabilities/entities/probability.entity';
 
@@ -65,6 +69,20 @@ import { Probability } from './probabilities/entities/probability.entity';
     ProbabilitiesModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
 })
 export class AppModule {}
