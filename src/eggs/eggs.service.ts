@@ -1,26 +1,39 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Egg } from './entities/egg.entity';
 import { CreateEggDto } from './dto/create-egg.dto';
 import { UpdateEggDto } from './dto/update-egg.dto';
 
 @Injectable()
 export class EggsService {
-  create(createEggDto: CreateEggDto) {
-    return 'This action adds a new egg';
+  constructor(
+    @InjectRepository(Egg)
+    private readonly eggRepository: Repository<Egg>,
+  ) {}
+
+  findAll(): Promise<Egg[]> {
+    return this.eggRepository.find();
   }
 
-  findAll() {
-    return `This action returns all eggs`;
+  async findOne(egg_id: string): Promise<Egg> {
+    const egg = await this.eggRepository.findOne({ where: { egg_id } });
+    return egg;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} egg`;
+  async create(eggData: CreateEggDto): Promise<Egg> {
+    const newEgg = this.eggRepository.create(eggData);
+    return await this.eggRepository.save(newEgg);
   }
 
-  update(id: number, updateEggDto: UpdateEggDto) {
-    return `This action updates a #${id} egg`;
+  async update(egg_id: string, eggdata: UpdateEggDto): Promise<Egg> {
+    await this.eggRepository.update(egg_id, eggdata);
+    return await this.eggRepository.findOne({
+      where: { egg_id },
+    });
   }
 
-  delete(id: number) {
-    return `This action removes a #${id} egg`;
+  async delete(egg_id: string): Promise<void> {
+    await this.eggRepository.delete(egg_id);
   }
 }

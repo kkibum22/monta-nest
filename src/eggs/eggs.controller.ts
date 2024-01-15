@@ -1,3 +1,4 @@
+import { EggsService } from './eggs.service';
 import {
   Controller,
   Get,
@@ -9,7 +10,6 @@ import {
   HttpCode,
 } from '@nestjs/common';
 
-import { EggsService } from './eggs.service';
 import { CreateEggDto } from './dto/create-egg.dto';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { MemberRole } from 'src/members/entities/member-role.enum';
@@ -43,7 +43,7 @@ export class EggsController {
 
   @Post()
   @HttpCode(201)
-  @Roles(MemberRole.ADMIN)
+  // @Roles(MemberRole.ADMIN)
   async createEgg(@Body() createEggData: CreateEggDto) {
     const result = await this.eggsService.create(createEggData);
     return {
