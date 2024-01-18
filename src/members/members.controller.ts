@@ -2,10 +2,12 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   ForbiddenException,
   Get,
   HttpCode,
   Param,
+  ParseIntPipe,
   Post,
   Req,
 } from '@nestjs/common';
@@ -36,7 +38,7 @@ export class MembersController {
   @Post(':member_id/study-categories')
   async createCategory(
     @Req() req,
-    @Param('member_id') memberId: string,
+    @Param('member_id') member_id: string,
     @Body() createStudyCategoryDto: CreateStudyCategoryDto,
   ) {
     const member = await this.membersService.findOneByAccountId(req.user.sub);
@@ -46,7 +48,7 @@ export class MembersController {
       );
     }
 
-    if (memberId !== member.member_id) {
+    if (member_id !== member.member_id) {
       throw new ForbiddenException('카테고리를 생성할 권한이 없습니다.');
     }
 
@@ -64,7 +66,7 @@ export class MembersController {
 
   @HttpCode(200)
   @Get(':member_id/study-categories')
-  async getStudyCategories(@Req() req, @Param('member_id') memberId: string) {
+  async getStudyCategories(@Req() req, @Param('member_id') member_id: string) {
     const member = await this.membersService.findOneByAccountId(req.user.sub);
     if (!member) {
       throw new BadRequestException(
@@ -72,7 +74,7 @@ export class MembersController {
       );
     }
 
-    if (memberId !== member.member_id) {
+    if (member_id !== member.member_id) {
       throw new ForbiddenException('카테고리를 조회할 권한이 없습니다.');
     }
 
@@ -84,6 +86,31 @@ export class MembersController {
       data: {
         study_categories: result,
       },
+    };
+  }
+
+  @HttpCode(204)
+  @Delete(':member_id/study-categories/:study_category_id')
+  async deleteCategory(
+    @Req() req,
+    @Param('member_id') member_id: string,
+    @Param('study_category_id', ParseIntPipe) study_category_id: number,
+  ) {
+    const member = await this.membersService.findOneByAccountId(req.user.sub);
+    if (!member) {
+      throw new BadRequestException(
+        '로그인한 사용자의 프로필이 존재하지 않습니다.',
+      );
+    }
+
+    if (member_id !== member.member_id) {
+      throw new ForbiddenException('카테고리를 삭제할 권한이 없습니다.');
+    }
+
+    const result = await this.studyCategoriesService.delete(study_category_id);
+    return {
+      status: 204,
+      data: result,
     };
   }
 }

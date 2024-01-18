@@ -59,4 +59,23 @@ export class StudyCategoriesService {
     });
     return categories;
   }
+
+  async delete(study_category_id: number) {
+    const exist = await this.studyCategoryRepository.findOne({
+      where: {
+        study_category_id,
+      },
+    });
+    if (!exist) {
+      throw new BadRequestException('해당 카테고리가 존재하지 않습니다.');
+    }
+    if (exist.hidden) {
+      throw new BadRequestException('이미 삭제된 카테고리입니다.');
+    }
+    exist.hidden = true;
+
+    await this.studyCategoryRepository.save(exist);
+
+    return null;
+  }
 }
