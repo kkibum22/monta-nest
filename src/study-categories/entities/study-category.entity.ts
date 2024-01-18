@@ -20,7 +20,7 @@ export class StudyCategory extends CommonEntity {
   @IsString()
   subject: string;
 
-  @Column({ type: 'bit' })
+  @Column()
   @IsBoolean()
   hidden: boolean;
 

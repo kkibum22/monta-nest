@@ -50,4 +50,13 @@ export class MembersService {
     });
     return member;
   }
+
+  async findOneById(member_id: string) {
+    const member = await this.membersRepository.findOne({
+      where: {
+        member_id,
+      },
+    });
+    return member;
+  }
 }
