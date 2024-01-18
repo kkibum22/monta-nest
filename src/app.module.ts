@@ -11,7 +11,7 @@ import { Character } from './common/entities/character.entity';
 import { StreaksModule } from './streaks/streaks.module';
 import { StudiesModule } from './studies/studies.module';
 import { StatisticsModule } from './statistics/statistics.module';
-import { Egg } from './common/entities/egg.entity';
+import { Egg } from './eggs/entities/egg.entity';
 import { EggInventory } from './common/entities/egg-inventory.entity';
 import { Statistic } from './statistics/entities/statistic.entity';
 import { StudyStreak } from './streaks/entities/study-streak.entity';
@@ -29,6 +29,7 @@ import { RolesGuard } from './auth/guards/roles.guard';
 import { ProbabilitiesModule } from './probabilities/probabilities.module';
 import { Probability } from './probabilities/entities/probability.entity';
 import { StudyCategoriesModule } from './study-categories/study-categories.module';
+import { EggsModule } from './eggs/eggs.module';
 
 @Module({
   imports: [
@@ -69,6 +70,7 @@ import { StudyCategoriesModule } from './study-categories/study-categories.modul
     TransactionRecordsModule,
     ProbabilitiesModule,
     StudyCategoriesModule,
+    EggsModule,
   ],
   controllers: [AppController],
   providers: [
