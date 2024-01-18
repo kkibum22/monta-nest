@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { CommonEntity } from './common.entity';
 import { IsNumber } from 'class-validator';
-import { Egg } from './egg.entity';
+import { Egg } from '../../eggs/entities/egg.entity';
 import { Member } from 'src/members/entities/member.entity';
 
 @Entity()
