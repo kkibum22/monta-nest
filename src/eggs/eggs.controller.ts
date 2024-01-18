@@ -11,8 +11,8 @@ import {
 } from '@nestjs/common';
 
 import { CreateEggDto } from './dto/create-egg.dto';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { MemberRole } from 'src/members/entities/member-role.enum';
+import { Roles } from '@src/auth/decorators/roles.decorator';
+import { MemberRole } from '@src/members/entities/member-role.enum';
 import { UpdateEggDto } from './dto/update-egg.dto';
 
 @Controller('eggs')

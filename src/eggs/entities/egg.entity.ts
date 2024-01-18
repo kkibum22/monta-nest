@@ -1,6 +1,6 @@
 import { IsNumber, IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { CommonEntity } from 'src/common/entities/common.entity';
+import { CommonEntity } from '@src/common/entities/common.entity';
 import { EggInventory } from '../../common/entities/egg-inventory.entity';
 
 @Entity()

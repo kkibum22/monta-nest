@@ -2,7 +2,7 @@ import { Module, forwardRef } from '@nestjs/common';
 import { StudyCategoriesService } from './study-categories.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudyCategory } from './entities/study-category.entity';
-import { MembersModule } from 'src/members/members.module';
+import { MembersModule } from '@src/members/members.module';
 
 @Module({
   imports: [

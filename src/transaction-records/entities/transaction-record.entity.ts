@@ -1,5 +1,5 @@
 import { IsEnum, IsNumber, IsString } from 'class-validator';
-import { CommonEntity } from 'src/common/entities/common.entity';
+import { CommonEntity } from '@src/common/entities/common.entity';
 import {
   Entity,
   Column,
@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { TransactionType } from './transaction.enum';
-import { Member } from 'src/members/entities/member.entity';
+import { Member } from '@src/members/entities/member.entity';
 
 @Entity()
 export class TransactionRecord extends CommonEntity {

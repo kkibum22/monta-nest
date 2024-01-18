@@ -1,5 +1,5 @@
 import { IsBoolean, IsString } from 'class-validator';
-import { CommonEntity } from 'src/common/entities/common.entity';
+import { CommonEntity } from '@src/common/entities/common.entity';
 import {
   Entity,
   Column,
@@ -9,7 +9,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { StudyRecord } from '../../studies/entities/study-record.entity';
-import { Member } from 'src/members/entities/member.entity';
+import { Member } from '@src/members/entities/member.entity';
 
 @Entity()
 export class StudyCategory extends CommonEntity {

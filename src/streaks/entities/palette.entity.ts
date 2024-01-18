@@ -1,5 +1,5 @@
 import { IsEnum, IsString } from 'class-validator';
-import { CommonEntity } from 'src/common/entities/common.entity';
+import { CommonEntity } from '@src/common/entities/common.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { PaletteGrade } from './palette.enum';
 import { StudyStreak } from './study-streak.entity';

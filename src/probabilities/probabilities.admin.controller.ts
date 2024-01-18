@@ -11,8 +11,8 @@ import {
 import { ProbabilitiesService } from './probabilities.service';
 import { CreateProbabilityDto } from './dto/create-probability.dto';
 import { UpdateProbabilityDto } from './dto/update-probability.dto';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { MemberRole } from 'src/members/entities/member-role.enum';
+import { Roles } from '@src/auth/decorators/roles.decorator';
+import { MemberRole } from '@src/members/entities/member-role.enum';
 
 @Controller('admin/probabilities')
 export class ProbabilitiesAdminController {

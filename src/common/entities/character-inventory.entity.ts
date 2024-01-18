@@ -1,7 +1,7 @@
-import { Member } from 'src/members/entities/member.entity';
-import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { Character } from './character.entity';
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { CommonEntity } from './common.entity';
+import { Character } from './character.entity';
+import { Member } from '@src/members/entities/member.entity';
 
 @Entity()
 export class CharacterInventory extends CommonEntity {

@@ -1,6 +1,6 @@
 import { IsNumber } from 'class-validator';
-import { CommonEntity } from 'src/common/entities/common.entity';
-import { Member } from 'src/members/entities/member.entity';
+import { CommonEntity } from '@src/common/entities/common.entity';
+import { Member } from '@src/members/entities/member.entity';
 import {
   Entity,
   Column,

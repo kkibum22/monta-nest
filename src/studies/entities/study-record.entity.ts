@@ -1,5 +1,5 @@
 import { IsNumber } from 'class-validator';
-import { CommonEntity } from 'src/common/entities/common.entity';
+import { CommonEntity } from '@src/common/entities/common.entity';
 import {
   Entity,
   Column,
@@ -7,8 +7,8 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { Member } from 'src/members/entities/member.entity';
-import { StudyCategory } from 'src/study-categories/entities/study-category.entity';
+import { Member } from '@src/members/entities/member.entity';
+import { StudyCategory } from '@src/study-categories/entities/study-category.entity';
 
 @Entity()
 export class StudyRecord extends CommonEntity {

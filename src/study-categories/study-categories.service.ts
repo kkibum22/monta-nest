@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MembersService } from 'src/members/members.service';
+import { MembersService } from '@src/members/members.service';
 import { StudyCategory } from './entities/study-category.entity';
 import { Repository } from 'typeorm';
 import { CreateStudyCategoryDto } from './dtos/create-study-category.dto';

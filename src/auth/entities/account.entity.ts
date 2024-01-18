@@ -1,7 +1,7 @@
+import { CommonEntity } from '@src/common/entities/common.entity';
+import { MemberRole } from '@src/members/entities/member-role.enum';
+import { Member } from '@src/members/entities/member.entity';
 import { IsEnum, IsString } from 'class-validator';
-import { CommonEntity } from 'src/common/entities/common.entity';
-import { MemberRole } from 'src/members/entities/member-role.enum';
-import { Member } from 'src/members/entities/member.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
 
 @Entity()

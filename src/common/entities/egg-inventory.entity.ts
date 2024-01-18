@@ -8,7 +8,7 @@ import {
 import { CommonEntity } from './common.entity';
 import { IsNumber } from 'class-validator';
 import { Egg } from '../../eggs/entities/egg.entity';
-import { Member } from 'src/members/entities/member.entity';
+import { Member } from '@src/members/entities/member.entity';
 
 @Entity()
 export class EggInventory extends CommonEntity {

@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Member } from './entities/member.entity';
 import { Repository } from 'typeorm';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthService } from '@src/auth/auth.service';
 
 @Injectable()
 export class MembersService {

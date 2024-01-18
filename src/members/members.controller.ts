@@ -13,9 +13,9 @@ import {
   Req,
 } from '@nestjs/common';
 import { MembersService } from './members.service';
-import { StudyCategoriesService } from 'src/study-categories/study-categories.service';
-import { CreateStudyCategoryDto } from 'src/study-categories/dtos/create-study-category.dto';
-import { UpdateStudyCategoryDto } from 'src/study-categories/dtos/update-study-category.dto';
+import { StudyCategoriesService } from '@src/study-categories/study-categories.service';
+import { CreateStudyCategoryDto } from '@src/study-categories/dtos/create-study-category.dto';
+import { UpdateStudyCategoryDto } from '@src/study-categories/dtos/update-study-category.dto';
 
 @Controller('members')
 export class MembersController {
