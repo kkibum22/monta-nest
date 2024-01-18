@@ -16,6 +16,13 @@ export class ProbabilitiesService {
     return await this.probabilityRepository.find();
   }
 
+  async findByGrade(grade: string): Promise<Probability[]> {
+    const result = await this.probabilityRepository.find({
+      where: { egg_grade: grade },
+    });
+    return result;
+  }
+
   async create(probabilityData: CreateProbabilityDto): Promise<Probability> {
     const newProbability = this.probabilityRepository.create(probabilityData);
     return await this.probabilityRepository.save(newProbability);
