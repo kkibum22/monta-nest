@@ -11,13 +11,16 @@ import {
 import { ProbabilitiesService } from './probabilities.service';
 import { CreateProbabilityDto } from './dto/create-probability.dto';
 import { UpdateProbabilityDto } from './dto/update-probability.dto';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { MemberRole } from 'src/members/entities/member-role.enum';
 
 @Controller('probabilities')
 export class ProbabilitiesController {
   constructor(private readonly probabilitiesService: ProbabilitiesService) {}
 
-  @Get()
+  @Roles(MemberRole.ADMIN)
   @HttpCode(200)
+  @Get()
   async getAllProbabilities() {
     const result = await this.probabilitiesService.findAll();
     return {
@@ -26,8 +29,9 @@ export class ProbabilitiesController {
     };
   }
 
-  @Post()
   @HttpCode(201)
+  @Roles(MemberRole.ADMIN)
+  @Post()
   async createProbability(@Body() createProbabilityData: CreateProbabilityDto) {
     const result = await this.probabilitiesService.create(
       createProbabilityData,
@@ -38,8 +42,9 @@ export class ProbabilitiesController {
     };
   }
 
-  @Patch(':probability_id')
   @HttpCode(200)
+  @Roles(MemberRole.ADMIN)
+  @Patch(':probability_id')
   async updateProbability(
     @Param('probability_id') probability_id: number,
     @Body() updateProbabilityData: UpdateProbabilityDto,
@@ -54,8 +59,9 @@ export class ProbabilitiesController {
     };
   }
 
-  @Delete(':probability_id')
   @HttpCode(204)
+  @Roles(MemberRole.ADMIN)
+  @Delete(':probability_id')
   async deleteProbability(@Param('probability_id') probability_id: number) {
     await this.probabilitiesService.delete(probability_id);
     return {

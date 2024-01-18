@@ -7,8 +7,8 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { StudyCategory } from './study-category.entity';
 import { Member } from 'src/members/entities/member.entity';
+import { StudyCategory } from 'src/study-categories/entities/study-category.entity';
 
 @Entity()
 export class StudyRecord extends CommonEntity {
