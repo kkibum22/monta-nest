@@ -3,6 +3,7 @@ import {
   Body,
   Controller,
   ForbiddenException,
+  Get,
   HttpCode,
   Param,
   Post,
@@ -57,6 +58,31 @@ export class MembersController {
       status: 201,
       data: {
         study_category_id: result.study_category_id,
+      },
+    };
+  }
+
+  @HttpCode(200)
+  @Get(':member_id/study-categories')
+  async getStudyCategories(@Req() req, @Param('member_id') memberId: string) {
+    const member = await this.membersService.findOneByAccountId(req.user.sub);
+    if (!member) {
+      throw new BadRequestException(
+        '로그인한 사용자의 프로필이 존재하지 않습니다.',
+      );
+    }
+
+    if (memberId !== member.member_id) {
+      throw new ForbiddenException('카테고리를 조회할 권한이 없습니다.');
+    }
+
+    const result = await this.studyCategoriesService.findAllByMemberId(
+      member.member_id,
+    );
+    return {
+      status: 200,
+      data: {
+        study_categories: result,
       },
     };
   }

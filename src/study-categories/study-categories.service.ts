@@ -43,4 +43,20 @@ export class StudyCategoriesService {
       return result;
     }
   }
+
+  async findAllByMemberId(member_id: string) {
+    const categories = await this.studyCategoryRepository.find({
+      where: {
+        member: {
+          member_id,
+        },
+        hidden: false,
+      },
+      select: {
+        study_category_id: true,
+        subject: true,
+      },
+    });
+    return categories;
+  }
 }
