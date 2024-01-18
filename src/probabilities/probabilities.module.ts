@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ProbabilitiesService } from './probabilities.service';
-import { ProbabilitiesController } from './probabilities.controller';
+import { ProbabilitiesAdminController } from './probabilities.admin.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Probability } from './entities/probability.entity';
+import { ProbabilitiesController } from './probabilities.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Probability])],
-  controllers: [ProbabilitiesController],
+  controllers: [ProbabilitiesAdminController, ProbabilitiesController],
   providers: [ProbabilitiesService],
 })
 export class ProbabilitiesModule {}
