@@ -30,7 +30,7 @@ export class EggsController {
     };
   }
 
-  @Get('egg_id')
+  @Get(':egg_id')
   @HttpCode(200)
   @Roles(MemberRole.ADMIN)
   async getOneEggs(@Param('egg_id') egg_id: string) {
@@ -43,7 +43,7 @@ export class EggsController {
 
   @Post()
   @HttpCode(201)
-  // @Roles(MemberRole.ADMIN)
+  @Roles(MemberRole.ADMIN)
   async createEgg(@Body() createEggData: CreateEggDto) {
     const result = await this.eggsService.create(createEggData);
     return {
